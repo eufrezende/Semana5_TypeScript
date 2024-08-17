@@ -93,6 +93,10 @@ class MC {
 //   }
 //Esse código é o mesmo que:
 class Employee {
+    //a declaração do public no construtor
+    //cria e inicializa a propriedade
+    //pode-se usar public readonly
+    //quando for private você precisa por _ antes do nome dela
     constructor( public title: string, public salary: number) {}
   }
 
@@ -120,3 +124,66 @@ usuario.name = 'Harold' // pode mudar
 //usuario.id = 5 // nao pode mudar
 
 console.log(`User:`, usuario)
+
+//Index Signatures
+
+class HotelRooms {
+    [roonNumber: string]: string
+}
+
+let room = new HotelRooms()
+room.A201 = 'Andre'
+room.A202 = "ana"
+room.A17 = 'Marcos'
+
+console.log(room)
+
+//Herança
+
+// class Pessoa {
+//     constructor(public firstName:string, public lastName: string, public age: number){}
+
+//     //método
+//     greet(){
+//         console.log('Hi')
+//     }
+// }
+// //Cliente do banco
+// class Clients extends Pessoa {
+//     balance(){
+//         console.log('Seu saldo é $100')
+//     }
+
+// }
+
+// let cliente1 = new Clients('Felipe', 'Rezende', 25)
+// cliente1.balance
+
+//Overriding
+class Pessoa {
+    constructor(public firstName:string, public lastName: string, public age: number){}
+
+    //método
+    get greet(){
+        return this.firstName + ' ' + this.lastName
+    }
+}
+//Cliente do banco
+class Clients extends Pessoa {
+    override get greet(){
+        return 'Querido ' + super.greet
+    }
+}
+
+//Cliente do banco
+class Staff extends Pessoa {
+    override get greet(){
+        return 'Oi ' + super.greet
+    }
+}
+
+let cliente1 = new Clients('Felipe', 'Rezende', 25)
+let staff1 = new Staff('Ana', 'Rezende', 25)
+console.log(cliente1.greet)
+console.log(staff1.greet)
+

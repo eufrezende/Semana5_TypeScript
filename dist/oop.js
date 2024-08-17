@@ -59,4 +59,35 @@ const usuario = new Userr('Dog', 1);
 console.log(usuario.id);
 usuario.name = 'Harold';
 console.log(`User:`, usuario);
+class HotelRooms {
+}
+let room = new HotelRooms();
+room.A201 = 'Andre';
+room.A202 = "ana";
+room.A17 = 'Marcos';
+console.log(room);
+class Pessoa {
+    constructor(firstName, lastName, age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
+    get greet() {
+        return this.firstName + ' ' + this.lastName;
+    }
+}
+class Clients extends Pessoa {
+    get greet() {
+        return 'Querido ' + super.greet;
+    }
+}
+class Staff extends Pessoa {
+    get greet() {
+        return 'Oi ' + super.greet;
+    }
+}
+let cliente1 = new Clients('Felipe', 'Rezende', 25);
+let staff1 = new Staff('Ana', 'Rezende', 25);
+console.log(cliente1.greet);
+console.log(staff1.greet);
 //# sourceMappingURL=oop.js.map
